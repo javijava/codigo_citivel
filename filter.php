@@ -15,7 +15,6 @@
       $items_per_page = ITEMS_PER_PAGE;
       // $registros = count($this->post_model->get_all_posts($this->uri->segment(3),$filter2, $this->uri->segment(4), '')->result());
       $registers = count($this->post_model->get_all_posts($filter, $filter2, $this->uri->segment(4), '')->result());
-      $inicio = 0;
       $total_pages = ceil($registers / $items_per_page);
       $offset = ($page - 1 ) * $items_per_page;
       $limit = " LIMIT $offset, $items_per_page ";
