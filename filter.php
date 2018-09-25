@@ -14,11 +14,10 @@
     if (is_numeric($page)) {
       $items_per_page = ITEMS_PER_PAGE;
       // $registros = count($this->post_model->get_all_posts($this->uri->segment(3),$filter2, $this->uri->segment(4), '')->result());
-      $registros = count($this->post_model->get_all_posts($filter, $filter2, $this->uri->segment(4), '')->result());
+      $registers = count($this->post_model->get_all_posts($filter, $filter2, $this->uri->segment(4), '')->result());
       $inicio = 0;
-      $total_paginas = ceil($registros / $page);
-      $total_pages = ceil($registros / $items_per_page);
-      $offset = ($pagina - 1 ) * $items_per_page;
+      $total_pages = ceil($registers / $items_per_page);
+      $offset = ($page - 1 ) * $items_per_page;
       $limit = " LIMIT $offset, $items_per_page ";
     } else {
       $limit = "";
@@ -58,7 +57,7 @@
     $tags_all = $this->tag_model->get_count_all_tags()->result();
     $this->twig->display('Frontend/index', array(
         "posts" => $posts,
-        "total_paginas" => (!isset($total_pages)) ? 0 : $total_pages,
+        "total_pages" => (!isset($total_pages)) ? 0 : $total_pages,
         "active" => $this->uri->segment(4),
         "filtro" => ($this->uri->segment(7)) ? $this->uri->segment(6) : $this->uri->segment(3),
         "seccion" => $this->uri->segment(2),
